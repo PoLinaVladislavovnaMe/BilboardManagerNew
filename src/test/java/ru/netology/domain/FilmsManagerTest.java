@@ -46,7 +46,20 @@ class FilmsManagerTest {
         };
         Assertions.assertArrayEquals(expected, result);
     }
-
+    @Test
+    void checkFindLastArrayEqualToLastLimit() {
+        FilmsManager fm = new FilmsManager(3);
+        fm.addFilm(new Film("Nimona"));
+        fm.addFilm(new Film("Ralf"));
+        fm.addFilm(new Film("Gentlemen"));
+        Film[] result = fm.findLast();
+        Film[] expected = new Film[]{
+                new Film("Gentlemen"),
+                new Film("Ralf"),
+                new Film("Nimona")
+        };
+        Assertions.assertArrayEquals(expected, result);
+    }
     @Test
     void checkFindLastArrayGreaterThanLastLimit() {
         FilmsManager fm = new FilmsManager(1);
